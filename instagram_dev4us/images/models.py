@@ -15,15 +15,24 @@ class Image(TimeStampModel):
     caption = models.TextField()
     creator = models.ForeignKey(user_models.User, null=True, on_delete = models.DO_NOTHING)
 
+    def __str__(self):
+        return '{} - {}'.format(self.location, self.caption)
+
 class Comment(TimeStampModel):
     """ Comment Model """
     message = models.TextField()
     creator = models.ForeignKey(user_models.User, null=True, on_delete = models.DO_NOTHING)
     image = models.ForeignKey(Image, null=True, on_delete = models.DO_NOTHING) 
 
+    def __str__(self):
+        return '{} - {}'.format(self.message, self.creator.username)
+
 class Like(TimeStampModel):
     """ Like Model """
 
     creator = models.ForeignKey(user_models.User, null=True, on_delete = models.DO_NOTHING)
     image = models.ForeignKey(Image, null=True, on_delete = models.DO_NOTHING)
+
+    def __str__(self):
+        return '{} - {}'.format(self.image.caption, self.creator.username)
 
