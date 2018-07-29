@@ -38,8 +38,18 @@ USE_TZ = True
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
+#DATABASES = {
+#    'default': env.db('DATABASE_URL', default='postgres://localhost/instagram_dev4us'),
+#}
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres:///instagram_dev4us'),
+    'default': { 
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'instagram_dev4us',
+        'USER': 'postgres',
+        'PASSWORD': '1q2w3e4r**',
+        'HOST': '127.0.0.1',
+        'PORT': '5432'
+    }
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
@@ -63,7 +73,6 @@ DJANGO_APPS = [
     'django.contrib.admin',
 ]
 THIRD_PARTY_APPS = [
-    'crispy_forms',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -71,6 +80,7 @@ THIRD_PARTY_APPS = [
 ]
 LOCAL_APPS = [
     'instagram_dev4us.users.apps.UsersAppConfig',
+    'instagram_dev4us.images.apps.ImagesConfig'
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -215,7 +225,7 @@ EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.s
 ADMIN_URL = 'admin/'
 # https://docs.djangoproject.com/en/dev/ref/settings/#admins
 ADMINS = [
-    ("""bronxofsoul@gmail.com""", 'bronxofsoul@gmail.com@example.com'),
+    ("""dev4us""", 'bronxofsoul@gmail.com'),
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS

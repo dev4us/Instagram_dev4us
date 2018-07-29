@@ -1,5 +1,5 @@
 """
-WSGI config for Instagram_dev4us project.
+WSGI config for instagram_dev4us project.
 
 This module contains the WSGI application used by Django's development server
 and any production WSGI deployments. It should expose a module-level variable

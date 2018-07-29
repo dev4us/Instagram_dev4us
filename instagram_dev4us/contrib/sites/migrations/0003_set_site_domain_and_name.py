@@ -13,8 +13,8 @@ def update_site_forward(apps, schema_editor):
     Site.objects.update_or_create(
         id=settings.SITE_ID,
         defaults={
-            "domain": "dev4us.instagram",
-            "name": "Instagram_dev4us",
+            "domain": "instagram.dev4us",
+            "name": "instagram_dev4us",
         },
     )
 
