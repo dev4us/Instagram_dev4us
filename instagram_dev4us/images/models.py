@@ -1,4 +1,5 @@
 from django.db import models
+from instagram_dev4us.users import models as user_models
 
 class TimeStampModel(models.Model):
     created_at = models.DateTimeField(auto_now_add = True)
@@ -8,10 +9,21 @@ class TimeStampModel(models.Model):
         abstract = True
 
 class Image(TimeStampModel):
+    """ Image Model """
     file = models.ImageField()
     location = models.CharField(max_length=140)
     caption = models.TextField()
+    creator = models.ForeignKey(user_models.User, null=True, on_delete = models.DO_NOTHING)
 
 class Comment(TimeStampModel):
+    """ Comment Model """
     message = models.TextField()
+    creator = models.ForeignKey(user_models.User, null=True, on_delete = models.DO_NOTHING)
+    image = models.ForeignKey(Image, null=True, on_delete = models.DO_NOTHING) 
+
+class Like(TimeStampModel):
+    """ Like Model """
+
+    creator = models.ForeignKey(user_models.User, null=True, on_delete = models.DO_NOTHING)
+    image = models.ForeignKey(Image, null=True, on_delete = models.DO_NOTHING)
 
