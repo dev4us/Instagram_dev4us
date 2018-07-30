@@ -19,6 +19,12 @@ urlpatterns = [
         "users/",
         include("instagram_dev4us.users.urls", namespace="users"),
     ),
+    # images management
+    # url(r'^images/', include("instagram_dev4us.images.urls", namespace="images")),
+    path(
+        "images/",
+        include("instagram_dev4us.images.urls", namespace="images"),
+    ),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
 ] + static(
