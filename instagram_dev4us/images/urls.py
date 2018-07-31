@@ -2,16 +2,8 @@
 from django.urls import path
 from . import views
 
-"""urlpatterns = [
-    url(
-        regex= r'^all/$',
-        view= views.ListAllImages.as_view(),
-        name= 'all_images',
-    )
-]"""
 app_name = "images"
 urlpatterns = [
-    path('all/', views.ListAllImages.as_view(), name='all_images'),
-    path('comments/', views.ListAllComments.as_view(), name='all_images'),
-    path('likes/', views.ListAllLikes.as_view(), name='all_images'),
+    path('', views.Feed.as_view(), name='Feed'),
+    path('<int:image_id>/like/', views.LikeImage.as_view(), name='like_image'),
 ]
