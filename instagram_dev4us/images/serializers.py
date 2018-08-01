@@ -12,7 +12,7 @@ class FeedUserSerialize(serializers.ModelSerializer):
         )
 
 class CommentSerializer(serializers.ModelSerializer):
-    creator = FeedUserSerialize()
+    creator = FeedUserSerialize(read_only=True)
 
     class Meta:
         model = models.Comment

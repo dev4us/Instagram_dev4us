@@ -6,4 +6,5 @@ app_name = "images"
 urlpatterns = [
     path('', views.Feed.as_view(), name='Feed'),
     path('<int:image_id>/like/', views.LikeImage.as_view(), name='like_image'),
+    path('<int:image_id>/comment/', views.CommentOnImage.as_view(), name='comment_image'),
 ]
