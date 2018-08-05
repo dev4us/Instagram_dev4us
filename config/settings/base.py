@@ -77,10 +77,12 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'rest_framework', # REST Framework
+    'taggit', # Tags for the photos
 ]
 LOCAL_APPS = [
     'instagram_dev4us.users.apps.UsersAppConfig',
-    'instagram_dev4us.images.apps.ImagesConfig'
+    'instagram_dev4us.images.apps.ImagesConfig',
+    'instagram_dev4us.notifications.apps.NotificationsConfig', # notifications app
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -248,3 +250,4 @@ SOCIALACCOUNT_ADAPTER = 'instagram_dev4us.users.adapters.SocialAccountAdapter'
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+TAGGIT_CASE_INSENSITIVE = True

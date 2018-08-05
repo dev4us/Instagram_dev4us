@@ -26,6 +26,10 @@ urlpatterns = [
         include("instagram_dev4us.images.urls", namespace="images"),
     ),
     path("accounts/", include("allauth.urls")),
+    path(
+        "notifications/",
+        include("instagram_dev4us.notifications.urls", namespace="notifications"),
+    ),
     # Your stuff: custom urls includes go here
 ] + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
