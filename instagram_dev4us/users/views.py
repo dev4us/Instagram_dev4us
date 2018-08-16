@@ -80,7 +80,19 @@ class UserProfile(APIView):
             return Response(status=status.HTTP_401_UNAUTHORIZED)
 
         else:
-            serializer = serializers.UserProfileSerializer
+            serializer = serializers.UserProfileSerializer(
+                found_user, data=request.data, partial=True
+            )
+
+            if serializer.is_valid():
+
+                serializer.save()
+
+                return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+            else:
+                return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class UserFollowers(APIView):
 
@@ -137,6 +149,33 @@ class Search(APIView):
             else:
                 return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)       
 
+class ChangePassword(APIView):
+    def put(self, request, user_name, format=None):
 
+        user = request.user
 
-        
+        current_password = request.data.get('current_password', None)
+
+        if user.username == user_name:
+            if current_password is not None:
+                passwords_match = user.check_password(current_password)             
+
+                if passwords_match:
+
+                    new_password = request.data.get('new_password', None)
+
+                    if new_password is not None:
+
+                        user.set_password(new_password)
+
+                        user.save()
+
+                        return Response(status=status.HTTP_200_OK)
+                    else:
+                        return Response(status=status.HTTP_400_BAD_REQUEST)
+                else:
+                    return Response(status=status.HTTP_400_BAD_REQUEST)
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST)                    
+        else:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
