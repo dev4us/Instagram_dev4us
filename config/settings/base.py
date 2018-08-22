@@ -38,19 +38,19 @@ USE_TZ = True
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
-#DATABASES = {
-#    'default': env.db('DATABASE_URL', default='postgres://localhost/instagram_dev4us'),
-#}
 DATABASES = {
-    'default': { 
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'instagram_dev4us',
-        'USER': 'postgres',
-        'PASSWORD': '1q2w3e4r**',
-        'HOST': '127.0.0.1',
-        'PORT': '5432'
-    }
+    'default': env.db('DATABASE_URL', default='postgres:///instagram_dev4us'),
 }
+#DATABASES = {
+#    'default': { 
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'instagram_dev4us',
+#        'USER': 'postgres',
+#        'PASSWORD': '1q2w3e4r**',
+#        'HOST': '127.0.0.1',
+#        'PORT': '5432'
+#    }
+#}
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 # URLS
