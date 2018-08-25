@@ -5,6 +5,7 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 from rest_framework_jwt.views import obtain_jwt_token
+from instagram_dev4us import views
 
 urlpatterns = [
     path(
@@ -32,6 +33,12 @@ urlpatterns = [
     path(
         "notifications/",
         include("instagram_dev4us.notifications.urls", namespace="notifications"),
+    ),
+    # catch all url 
+    path(
+        '',
+        views.ReactAppView.as_view(),
+        name='catch-all-urls',
     ),
     # Your stuff: custom urls includes go here
 ] + static(
