@@ -7,11 +7,7 @@ import store, { history } from 'redux/configureStore';
 import I18n from "redux-i18n";
 import { translations } from "translations";
 
-// Debug dev tool
-import "ReactotronConfig";
-
-import 'index.css';
-import App from 'App';
+import App from 'components/App';
 
 ReactDOM.render(
     <Provider store={store}>
